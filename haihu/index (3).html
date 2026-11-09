@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>渋柿</title>
+<style>
+a {cursor: pointer;}
+button {cursor: pointer;}
+body {margin: 0px; padding: 0px; cursor: not-allowed;}
+h1 {margin: 0px; border-bottom: 2px solid red;}
+header {position: fixed; background-color: lightyellow; border: 2px solid pink; height: 100%; width: 200px; margin: 0px;}
+.header-title {border: 5px solid pink; font-size: 50px; text-align: center; margin: 0px;}
+.big {font-size: 60px; text-align: center; margin: 0px;}
+.button {background-color: pink; margin: 5px; border-radius: 5px;}
+.button:hover {background-color: red; box-shadow:0px 0px 10px gray;}
+.mainct {margin-left: 230px;}
+.keijiban {background-color: black; color: white; border: 2px solid gray; margin: 5px;}
+</style>
+</head>
+<body>
+<header>
+<p class="header-title">渋柿<br>org</p>
+<button class="button" onclick="location.href='https://gomihero-e.github.io/sibugaki/index.html'">ホーム</button>
+<button class="button" onclick="location.href='https://gomihero-e.github.io/sibugaki/haihu/index.html'">配布</button>
+<button class="button" onclick="location.href='https://gomihero-e.github.io/sibugaki/doumei/index.html'">渋柿のクソサイト同盟（メンバー募集中）</button>
+<p>渋柿は今日も元気です。</p>
+<marquee class="keijiban" id="keijiban"><font color="red">相互リンク募集中です。</font>バナーは下｜クソサイト同盟のメンバー募集中です。上のボタンをクリック（click）</marquee>
+<script src="https://gomihero-e.github.io/sibugaki/keijiban.js"></script>
+</header>
+<div class="mainct">
+<p class="big">ウィジェット</p>
+<p>相互リンクをくれるならこのコードを差し上げよう。（嘘です自由にとっていって大丈夫ですすみません）</p>
+<h1>卵割</h1>
+<!-- 1. HTML部分: サイトの表示させたい場所に貼り付けてください -->
+<div class="code-container">
+  <div class="code-header">
+    <span class="code-lang">HTML</span>
+    <button class="copy-btn" onclick="copyCode(this)">
+      <svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <span>コピー</span>
+    </button>
+  </div>
+  <pre>
+<code class="code-block">&lt;!-- 卵割りコンポーネント：ここから --&gt;
+&lt;div class="egg-crack-wrapper"&gt;
+    &lt;div class="egg-crack-container" id="eggCrackApp"&gt;
+        &lt;!-- 中身（黄身） --&gt;
+        &lt;div class="egg-crack-yolk"&gt;&lt;/div&gt;
+        &lt;!-- 殻（上） --&gt;
+        &lt;div class="egg-crack-top egg-crack-half"&gt;&lt;/div&gt;
+        &lt;!-- 殻（下） --&gt;
+        &lt;div class="egg-crack-bottom egg-crack-half"&gt;&lt;/div&gt;
+        &lt;!-- ガイドテキスト --&gt;
+        &lt;div class="egg-crack-hint"&gt;クリックで割る&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;style&gt;
+        /* 周囲への影響を防ぐための外枠 */
+        .egg-crack-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            background-color: transparent; /* 背景になじませる */
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* 卵全体のコンテナ */
+        .egg-crack-container {
+            position: relative;
+            width: 140px;
+            height: 180px;
+            cursor: pointer;
+        }
+
+        /* 卵の殻の共通スタイル */
+        .egg-crack-half {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background-color: #fceddb; /* 卵の殻の色 */
+            box-shadow: inset -8px -8px 16px rgba(0,0,0,0.05), 0 8px 16px rgba(0,0,0,0.08);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2;
+        }
+
+        /* 殻の上半分 */
+        .egg-crack-top {
+            top: 0;
+            border-radius: 70px 70px 0 0;
+        }
+        /* ギザギザの表現（白色で削る） */
+        .egg-crack-top::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: #ffffff; /* 💡貼る場所の背景色に合わせて変更してください */
+            clip-path: polygon(0% 0%, 20% 100%, 40% 0%, 60% 100%, 80% 0%, 100% 100%, 100% 0%);
+        }
+
+        /* 殻の下半分 */
+        .egg-crack-bottom {
+            bottom: 0;
+            border-radius: 0 0 70px 70px;
+        }
+        /* 下半分のギザギザ */
+        .egg-crack-bottom::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: #ffffff; /* 💡貼る場所の背景色に合わせて変更してください */
+            clip-path: polygon(0% 100%, 20% 0%, 40% 100%, 60% 0%, 80% 100%, 100% 0%, 100% 100%);
+        }
+
+        /* 中身（黄身）のスタイル */
+        .egg-crack-yolk {
+            position: absolute;
+            top: 33%;
+            left: 25%;
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle at 30% 30%, #ffcc00, #ff9900);
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(255, 153, 0, 0.4);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1;
+        }
+
+        /* --- 割れた状態のスタイル --- */
+        .egg-crack-container.is-cracked .egg-crack-top {
+            transform: translateY(-40px) rotate(-12deg);
+        }
+
+        .egg-crack-container.is-cracked .egg-crack-bottom {
+            transform: translateY(40px) rotate(12deg);
+        }
+
+        .egg-crack-container.is-cracked .egg-crack-yolk {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ガイドテキスト */
+        .egg-crack-hint {
+            position: absolute;
+            bottom: -35px;
+            width: 100%;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            font-family: sans-serif;
+        }
+    &lt;/style&gt;
+
+    &lt;script&gt;
+        (function() {
+            const eggEl = document.getElementById('eggCrackApp');
+            if (eggEl) {
+                eggEl.addEventListener('click', function() {
+                    eggEl.classList.toggle('is-cracked');
+                });
+            }
+        })();
+    &lt;/script&gt;
+&lt;/div&gt;
+&lt;!-- 卵割りコンポーネント：ここまで --&gt;
+</code>
+</pre>
+</div>
+
+<style>
+/* 2. CSS部分: デザインを整えます（サイトのCSSファイルか<style>タグ内に貼り付け） */
+.code-container {
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #1e1e1e;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.code-lang {
+  color: #aaa;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #ccc;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+  border-color: #888;
+}
+
+.copy-btn.copied {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+}
+
+pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+code {
+  color: #d4d4d4;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: block;
+  white-space: pre;
+}
+</style>
+
+<script>
+/* 3. JavaScript部分: コピー機能のロジック（</body>直前などに貼り付け） */
+function copyCode(button) {
+  // ボタンと同じ階層、または親要素経由で<code>要素を探してテキストを取得
+  const container = button.closest('.code-container');
+  const codeText = container.querySelector('code').innerText;
+
+  // クリップボードにコピー
+  navigator.clipboard.writeText(codeText).then(() => {
+    // 成功時の見た目の変化
+    const btnText = button.querySelector('span');
+    const originalText = btnText.textContent;
+    
+    button.classList.add('copied');
+    btnText.textContent = 'コピー完了！';
+
+    // 2秒後に元の状態に戻す
+    setTimeout(() => {
+      button.classList.remove('copied');
+      btnText.textContent = originalText;
+    }, 2000);
+  }).catch(err => {
+    console.error('コピーに失敗しました: ', err);
+    alert('コピーに失敗しました。手動でコピーしてください。');
+  });
+}
+</script>
+<h1>柿カット</h1>
+<!-- 1. HTML部分: サイトの表示させたい場所に貼り付けてください -->
+<div class="code-container">
+  <div class="code-header">
+    <span class="code-lang">HTML</span>
+    <button class="copy-btn" onclick="copyCode(this)">
+      <svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <span>コピー</span>
+    </button>
+  </div>
+  <pre><code class="code-block">&lt;!-- 柿カットコンポーネント：ここから --&gt;
+&lt;div class="persimmon-cut-wrapper"&gt;
+    &lt;div class="persimmon-cut-container" id="persimmonApp"&gt;
+        &lt;!-- 内側の果肉・種（割れたときに見える中身） --&gt;
+        &lt;div class="persimmon-inside"&gt;
+            &lt;div class="persimmon-flesh"&gt;
+                &lt;!-- 種（2つ配置） --&gt;
+                &lt;div class="persimmon-seed seed-left"&gt;&lt;/div&gt;
+                &lt;div class="persimmon-seed seed-right"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- 外側の皮（左半分） --&gt;
+        &lt;div class="persimmon-half persimmon-left"&gt;
+            &lt;!-- ヘタ（左側） --&gt;
+            &lt;div class="persimmon-calyx calyx-l"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- 外側の皮（右半分） --&gt;
+        &lt;div class="persimmon-half persimmon-right"&gt;
+            &lt;!-- ヘタ（右側） --&gt;
+            &lt;div class="persimmon-calyx calyx-r"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- ガイドテキスト --&gt;
+        &lt;div class="persimmon-hint"&gt;クリックでカット&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;style&gt;
+        /* 周囲への影響を防ぐための外枠 */
+        .persimmon-cut-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            background-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* 柿全体のコンテナ */
+        .persimmon-cut-container {
+            position: relative;
+            width: 160px;
+            height: 140px;
+            cursor: pointer;
+        }
+
+        /* 柿の皮（外側）の共通スタイル */
+        .persimmon-half {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background-color: #ff7a00; /* 柿のオレンジ色 */
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.08);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 3;
+        }
+
+        /* 左半分の皮 */
+        .persimmon-left {
+            left: 0;
+            border-radius: 60px 0 0 60px;
+            transform-origin: center left;
+        }
+
+        /* 右半分の皮 */
+        .persimmon-right {
+            right: 0;
+            border-radius: 0 60px 60px 0;
+            transform-origin: center right;
+        }
+
+        /* ヘタの共通スタイル */
+        .persimmon-calyx {
+            position: absolute;
+            top: -10px;
+            width: 25px;
+            height: 15px;
+            background-color: #4a6b2c; /* ヘタの緑色 */
+            border-radius: 50% 50% 0 0;
+        }
+        .calyx-l {
+            right: 0;
+            border-radius: 15px 0 0 5px;
+        }
+        .calyx-r {
+            left: 0;
+            border-radius: 0 15px 5px 0;
+        }
+
+        /* 割れたときに見える中身（果肉のベース） */
+        .persimmon-inside {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 150px;
+            height: 130px;
+            background-color: #ff9e3b; /* 熟した果肉の明るいオレンジ */
+            border-radius: 55px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.3s ease, transform 0.4s ease;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+        }
+
+        /* 果肉の質感を出すための同心円 */
+        .persimmon-flesh {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 130px;
+            height: 110px;
+            background-color: #ffa84c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* 柿の種 */
+        .persimmon-seed {
+            width: 14px;
+            height: 28px;
+            background-color: #5c2c16; /* 種の茶色 */
+            border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+            box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+        }
+        .seed-left { transform: rotate(-15deg); }
+        .seed-right { transform: rotate(15deg); }
+
+        /* --- 割れた状態（JavaScriptでクラスを付与） --- */
+        .persimmon-cut-container.is-cut .persimmon-left {
+            transform: translateX(-45px) rotate(-10deg);
+        }
+
+        .persimmon-cut-container.is-cut .persimmon-right {
+            transform: translateX(45px) rotate(10deg);
+        }
+
+        .persimmon-cut-container.is-cut .persimmon-inside {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ガイドテキスト */
+        .persimmon-hint {
+            position: absolute;
+            bottom: -35px;
+            width: 100%;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            font-family: sans-serif;
+        }
+    &lt;/style&gt;
+
+    &lt;script&gt;
+        (function() {
+            const persimmonEl = document.getElementById('persimmonApp');
+            if (persimmonEl) {
+                persimmonEl.addEventListener('click', function() {
+                    persimmonEl.classList.toggle('is-cut');
+                });
+            }
+        })();
+    &lt;/script&gt;
+&lt;/div&gt;
+&lt;!-- 柿カットコンポーネント：ここまで --&gt;</code></pre>
+</div>
+
+<style>
+/* 2. CSS部分: デザインを整えます（サイトのCSSファイルか<style>タグ内に貼り付け） */
+.code-container {
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #1e1e1e;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.code-lang {
+  color: #aaa;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #ccc;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+  border-color: #888;
+}
+
+.copy-btn.copied {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+}
+
+pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+code {
+  color: #d4d4d4;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: block;
+  white-space: pre;
+}
+</style>
+
+<script>
+/* 3. JavaScript部分: コピー機能のロジック（</body>直前などに貼り付け） */
+function copyCode(button) {
+  // ボタンと同じ階層、または親要素経由で<code>要素を探してテキストを取得
+  const container = button.closest('.code-container');
+  const codeText = container.querySelector('code').innerText;
+
+  // クリップボードにコピー
+  navigator.clipboard.writeText(codeText).then(() => {
+    // 成功時の見た目の変化
+    const btnText = button.querySelector('span');
+    const originalText = btnText.textContent;
+    
+    button.classList.add('copied');
+    btnText.textContent = 'コピー完了！';
+
+    // 2秒後に元の状態に戻す
+    setTimeout(() => {
+      button.classList.remove('copied');
+      btnText.textContent = originalText;
+    }, 2000);
+  }).catch(err => {
+    console.error('コピーに失敗しました: ', err);
+    alert('コピーに失敗しました。手動でコピーしてください。');
+  });
+}
+</script>
+<h1>拍手</h1>
+<!-- 1. HTML部分: サイトの表示させたい場所に貼り付けてください -->
+<div class="code-container">
+  <div class="code-header">
+    <span class="code-lang">HTML</span>
+    <button class="copy-btn" onclick="copyCode(this)">
+      <svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <span>コピー</span>
+    </button>
+  </div>
+  <pre><code class="code-block">&lt;!-- 拍手コンポーネント：ここから --&gt;
+&lt;div class="clap-btn-wrapper"&gt;
+    &lt;div class="clap-btn-container" id="clapApp"&gt;
+        &lt;!-- エフェクト（飛び出す記号） --&gt;
+        &lt;div class="clap-effect effect-star1"&gt;★&lt;/div&gt;
+        &lt;div class="clap-effect effect-star2"&gt;✦&lt;/div&gt;
+        &lt;div class="clap-effect effect-note1"&gt;♪&lt;/div&gt;
+        &lt;div class="clap-effect effect-note2"&gt;♫&lt;/div&gt;
+        
+        &lt;!-- 左手 --&gt;
+        &lt;div class="clap-hand hand-left"&gt;✋&lt;/div&gt;
+        &lt;!-- 右手 --&gt;
+        &lt;div class="clap-hand hand-right"&gt;🤚&lt;/div&gt;
+        
+        &lt;!-- ガイドテキスト --&gt;
+        &lt;div class="clap-hint"&gt;クリックで拍手&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;style&gt;
+        /* 周囲への影響を防ぐための外枠 */
+        .clap-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+            background-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* 拍手全体のコンテナ */
+        .clap-btn-container {
+            position: relative;
+            width: 160px;
+            height: 120px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 手の共通スタイル（絵文字を使用） */
+        .clap-hand {
+            position: absolute;
+            font-size: 50px;
+            line-height: 1;
+            transition: transform 0.1s ease-out;
+            z-index: 2;
+        }
+
+        /* 左手：初期位置は少し左に離れて傾いている */
+        .hand-left {
+            transform: translateX(-40px) rotate(25deg);
+        }
+
+        /* 右手：初期位置は少し右に離れて傾いている */
+        .hand-right {
+            transform: translateX(40px) rotate(-25deg);
+        }
+
+        /* --- 💡 クリックした瞬間（一瞬パチッと合わさるアニメーション） --- */
+        .clap-btn-container.is-clapping .hand-left {
+            animation: clap-left 0.2s ease-in-out;
+        }
+        .clap-btn-container.is-clapping .hand-right {
+            animation: clap-right 0.2s ease-in-out;
+        }
+
+        @keyframes clap-left {
+            0% { transform: translateX(-40px) rotate(25deg); }
+            40% { transform: translateX(5px) rotate(-5deg) scale(1.1); } /* 中央でぶつかる */
+            100% { transform: translateX(-40px) rotate(25deg); }
+        }
+
+        @keyframes clap-right {
+            0% { transform: translateX(40px) rotate(-25deg); }
+            40% { transform: translateX(-5px) rotate(5deg) scale(1.1); } /* 中央でぶつかる */
+            100% { transform: translateX(40px) rotate(-25deg); }
+        }
+
+        /* --- エフェクトの共通スタイル --- */
+        .clap-effect {
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* クリック時にエフェクトを動かすクラス */
+        .clap-btn-container.is-clapping .clap-effect {
+            animation-duration: 0.5s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+        }
+
+        /* 各エフェクトの飛び出す方向と色 */
+        .clap-btn-container.is-clapping .effect-star1 {
+            color: #ffca28;
+            animation-name: fly-up-left;
+        }
+        .clap-btn-container.is-clapping .effect-star2 {
+            color: #ff7043;
+            animation-name: fly-down-right;
+            animation-delay: 0.05s;
+        }
+        .clap-btn-container.is-clapping .effect-note1 {
+            color: #29b6f6;
+            animation-name: fly-up-right;
+        }
+        .clap-btn-container.is-clapping .effect-note2 {
+            color: #ab47bc;
+            animation-name: fly-down-left;
+            animation-delay: 0.03s;
+        }
+
+        /* エフェクトの軌道アニメーション（中央から外へ広がりながら消える） */
+        @keyframes fly-up-left {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(-50px, -40px) scale(1.3) rotate(-30deg); opacity: 0; }
+        }
+        @keyframes fly-up-right {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(50px, -45px) scale(1.3) rotate(30deg); opacity: 0; }
+        }
+        @keyframes fly-down-left {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(-45px, 35px) scale(1.2) rotate(-15deg); opacity: 0; }
+        }
+        @keyframes fly-down-right {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(45px, 40px) scale(1.2) rotate(15deg); opacity: 0; }
+        }
+
+        /* ガイドテキスト */
+        .clap-hint {
+            position: absolute;
+            bottom: -25px;
+            width: 100%;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            font-family: sans-serif;
+        }
+    &lt;/style&gt;
+
+    &lt;script&gt;
+        (function() {
+            const clapEl = document.getElementById('clapApp');
+            if (clapEl) {
+                clapEl.addEventListener('click', function() {
+                    // 連打できるように、すでにクラスがついていたら一旦消して強制再トリガー
+                    clapEl.classList.remove('is-clapping');
+                    void clapEl.offsetWidth; /* リフローを起こしてアニメーションをリセット */
+                    clapEl.classList.add('is-clapping');
+                });
+
+                // アニメーションが終わったら自動でクラスを外す（元の待機状態に戻す）
+                clapEl.addEventListener('animationend', function(e) {
+                    // 手のアニメーション（clap-leftなど）が終わったタイミングで判定
+                    if (e.animationName.startsWith('clap')) {
+                        clapEl.classList.remove('is-clapping');
+                    }
+                });
+            }
+        })();
+    &lt;/script&gt;
+&lt;/div&gt;
+&lt;!-- 拍手コンポーネント：ここまで --&gt;</code></pre>
+</div>
+
+<style>
+/* 2. CSS部分: デザインを整えます（サイトのCSSファイルか<style>タグ内に貼り付け） */
+.code-container {
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #1e1e1e;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.code-lang {
+  color: #aaa;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #ccc;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+  border-color: #888;
+}
+
+.copy-btn.copied {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+}
+
+pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+code {
+  color: #d4d4d4;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: block;
+  white-space: pre;
+}
+</style>
+
+<script>
+/* 3. JavaScript部分: コピー機能のロジック（</body>直前などに貼り付け） */
+function copyCode(button) {
+  // ボタンと同じ階層、または親要素経由で<code>要素を探してテキストを取得
+  const container = button.closest('.code-container');
+  const codeText = container.querySelector('code').innerText;
+
+  // クリップボードにコピー
+  navigator.clipboard.writeText(codeText).then(() => {
+    // 成功時の見た目の変化
+    const btnText = button.querySelector('span');
+    const originalText = btnText.textContent;
+    
+    button.classList.add('copied');
+    btnText.textContent = 'コピー完了！';
+
+    // 2秒後に元の状態に戻す
+    setTimeout(() => {
+      button.classList.remove('copied');
+      btnText.textContent = originalText;
+    }, 2000);
+  }).catch(err => {
+    console.error('コピーに失敗しました: ', err);
+    alert('コピーに失敗しました。手動でコピーしてください。');
+  });
+}
+</script>
+<h1>いいねボタン</h1>
+<!-- 1. HTML部分: サイトの表示させたい場所に貼り付けてください -->
+<div class="code-container">
+  <div class="code-header">
+    <span class="code-lang">HTML</span>
+    <button class="copy-btn" onclick="copyCode(this)">
+      <svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <span>コピー</span>
+    </button>
+  </div>
+  <pre><code class="code-block">&lt;!-- いいねボタンコンポーネント：ここから --&gt;
+&lt;div class="like-btn-wrapper"&gt;
+    &lt;button class="like-btn-container" id="likeBtnApp"&gt;
+        &lt;span class="like-btn-icon"&gt;❤️&lt;/span&gt;
+        &lt;span class="like-btn-text"&gt;いいね！&lt;/span&gt;
+        &lt;span class="like-btn-count" id="likeBtnCount"&gt;0&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;style&gt;
+        /* 周囲への影響を防ぐための外枠 */
+        .like-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            background-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* いいねボタン本体のスタイル */
+        .like-btn-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #ff7675, #d63031);
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(214, 48, 49, 0.3);
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            outline: none;
+        }
+
+        /* ボタンを押したときのへこみアクション */
+        .like-btn-container:active {
+            transform: scale(0.95);
+        }
+
+        .like-btn-icon {
+            font-size: 18px;
+            transition: transform 0.2s ease;
+        }
+        .like-btn-container:hover .like-btn-icon {
+            transform: scale(1.2) rotate(-10deg);
+        }
+
+        /* カウント数字の背景 */
+        .like-btn-count {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 14px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* --- 💡 動的に生成されるパーティクルのスタイル --- */
+        .like-particle {
+            position: fixed; /* 画面全体に対して配置 */
+            pointer-events: none; /* クリックを邪魔しない */
+            font-size: 20px;
+            z-index: 99999;
+            opacity: 1;
+            will-change: transform, opacity;
+        }
+    &lt;/style&gt;
+
+    &lt;script&gt;
+        (function() {
+            const btn = document.getElementById('likeBtnApp');
+            const countEl = document.getElementById('likeBtnCount');
+            if (!btn || !countEl) return;
+
+            let count = 0;
+
+            btn.addEventListener('click', function(e) {
+                // 1. カウントアップ
+                count++;
+                countEl.textContent = count;
+
+                // 2. クリックされたボタンの位置（画面上の絶対座標）を取得
+                const rect = btn.getBoundingClientRect();
+                const btnX = rect.left + rect.width / 2;
+                const btnY = rect.top;
+
+                // 1回のクリックで3個のパーティクルを生成
+                for (let i = 0; i &lt; 3; i++) {
+                    createParticle(btnX, btnY);
+                }
+            });
+
+            function createParticle(startX, startY) {
+                const particle = document.createElement('div');
+                particle.className = 'like-particle';
+                particle.textContent = '❤️';
+                
+                // 初期の左右のブレ・サイズをランダムに設定
+                const randomOffset = (Math.random() - 0.5) * 40; // 左右に最大20px散らす
+                const randomScale = 0.5 + Math.random() * 0.8; // サイズのばらつき
+                
+                particle.style.left = (startX + randomOffset) + 'px';
+                particle.style.top = startY + 'px';
+                particle.style.transform = `scale(${randomScale})`;
+
+                document.body.appendChild(particle);
+
+                // JavaScriptのアニメーションでサイト上部（Webページの一番上）まで移動させる
+                let currentY = startY;
+                let currentX = startX + randomOffset;
+                
+                // 昇るスピードと横揺れの周期をランダム化
+                const speed = 4 + Math.random() * 4; // 1フレームあたりの上昇ピクセル数
+                const swingRange = 1 + Math.random() * 2; // 横揺れの幅
+                let angle = Math.random() * 100;
+
+                function animate() {
+                    currentY -= speed; // 上へ移動
+                    angle += 0.05;
+                    const swing = Math.sin(angle) * swingRange; // ふわふわ揺れる動き
+                    currentX += swing;
+
+                    // 画面上部に近づくにつれて透明度（opacity）を落とす
+                    // （残り距離が少ない、または画面外（Y&lt;=0）に出たら消滅）
+                    const opacity = Math.min(1, currentY / (startY * 0.8));
+                    
+                    particle.style.top = currentY + 'px';
+                    particle.style.left = currentX + 'px';
+                    particle.style.opacity = opacity;
+
+                    if (currentY &gt; -30 && opacity &gt; 0.01) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        particle.remove(); // 画面上部に到達、または見えなくなったら削除
+                    }
+                }
+
+                requestAnimationFrame(animate);
+            }
+        })();
+    &lt;/script&gt;
+&lt;/div&gt;
+&lt;!-- いいねボタンコンポーネント：ここまで --&gt;</code></pre>
+</div>
+
+<style>
+/* 2. CSS部分: デザインを整えます（サイトのCSSファイルか<style>タグ内に貼り付け） */
+.code-container {
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #1e1e1e;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.code-lang {
+  color: #aaa;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #ccc;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+  border-color: #888;
+}
+
+.copy-btn.copied {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+}
+
+pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+code {
+  color: #d4d4d4;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: block;
+  white-space: pre;
+}
+</style>
+
+<script>
+/* 3. JavaScript部分: コピー機能のロジック（</body>直前などに貼り付け） */
+function copyCode(button) {
+  // ボタンと同じ階層、または親要素経由で<code>要素を探してテキストを取得
+  const container = button.closest('.code-container');
+  const codeText = container.querySelector('code').innerText;
+
+  // クリップボードにコピー
+  navigator.clipboard.writeText(codeText).then(() => {
+    // 成功時の見た目の変化
+    const btnText = button.querySelector('span');
+    const originalText = btnText.textContent;
+    
+    button.classList.add('copied');
+    btnText.textContent = 'コピー完了！';
+
+    // 2秒後に元の状態に戻す
+    setTimeout(() => {
+      button.classList.remove('copied');
+      btnText.textContent = originalText;
+    }, 2000);
+  }).catch(err => {
+    console.error('コピーに失敗しました: ', err);
+    alert('コピーに失敗しました。手動でコピーしてください。');
+  });
+}
+</script>
+<h1>花火</h1>
+<!-- 1. HTML部分: サイトの表示させたい場所に貼り付けてください -->
+<div class="code-container">
+  <div class="code-header">
+    <span class="code-lang">HTML</span>
+    <button class="copy-btn" onclick="copyCode(this)">
+      <svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <span>コピー</span>
+    </button>
+  </div>
+  <pre><code class="code-block">&lt;!-- 花火コンポーネント：ここから --&gt;
+&lt;div class="fw-trigger-wrapper"&gt;
+    &lt;div class="fw-trigger-btn" id="fireworkBtn"&gt;
+        &lt;span class="fw-icon"&gt;🎆&lt;/span&gt;
+        &lt;span class="fw-text"&gt;クリックで花火を上げる&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;style&gt;
+        /* 周囲への影響を防ぐための外枠 */
+        .fw-trigger-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            background-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* 起動ボタンのスタイル */
+        .fw-trigger-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #1e1b4b, #311042);
+            color: #ffffff;
+            border: 2px solid #a855f7;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: sans-serif;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .fw-trigger-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+            background: linear-gradient(135deg, #2e1065, #4c1d95);
+        }
+
+        .fw-trigger-btn:active {
+            transform: translateY(1px);
+        }
+
+        .fw-icon {
+            font-size: 20px;
+            animation: fw-bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes fw-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* --- 💡 動的に生成される花火パーティクルのスタイル --- */
+        .fw-particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999999;
+            will-change: transform, opacity;
+        }
+    &lt;/style&gt;
+
+    &lt;script&gt;
+        (function() {
+            const btn = document.getElementById('fireworkBtn');
+            if (!btn) return;
+
+            // 鮮やかな花火のカラーバリエーション
+            const colors = [
+                '#ff3366', '#00f0ff', '#ffea00', '#39ff14', 
+                '#ff00ff', '#ff9900', '#ffffff', '#bf55ec'
+            ];
+
+            btn.addEventListener('click', function(e) {
+                // 1. ボタンを押した画面上の座標を取得
+                const rect = btn.getBoundingClientRect();
+                const startX = rect.left + rect.width / 2;
+                const startY = rect.top;
+
+                // 2. 打ち上げ目標の高さ（現在の画面の適当な上部エリア）
+                const targetY = window.innerHeight * (0.15 + Math.random() * 0.25);
+
+                // 3. 打ち上げ光の玉を生成
+                createRocket(startX, startY, targetY);
+            });
+
+            // 火花が昇るアニメーション
+            function createRocket(startX, startY, targetY) {
+                const rocket = document.createElement('div');
+                rocket.className = 'fw-particle';
+                rocket.style.backgroundColor = '#ffea00';
+                rocket.style.boxShadow = '0 0 10px #ffea00, 0 0 20px #ffea00';
+                rocket.style.left = startX + 'px';
+                rocket.style.top = startY + 'px';
+                document.body.appendChild(rocket);
+
+                let currentY = startY;
+                const speed = 12; // 上昇スピード
+
+                function launch() {
+                    currentY -= speed;
+                    rocket.style.top = currentY + 'px';
+
+                    // 目標の高さに達したら爆発
+                    if (currentY &lt;= targetY) {
+                        rocket.remove();
+                        explode(startX, targetY);
+                    } else {
+                        requestAnimationFrame(launch);
+                    }
+                }
+                requestAnimationFrame(launch);
+            }
+
+            // ドカンと広がる爆発アニメーション
+            function explode(x, y) {
+                const particleCount = 40 + Math.floor(Math.random() * 20); // 火花の数
+                const baseColor = colors[Math.floor(Math.random() * colors.length)]; // この花火の色
+                const nextColor = colors[Math.floor(Math.random() * colors.length)]; // 変化用の色
+
+                for (let i = 0; i &lt; particleCount; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'fw-particle';
+                    
+                    // 2色混ざった綺麗な花火にする
+                    p.style.backgroundColor = Math.random() &gt; 0.4 ? baseColor : nextColor;
+                    p.style.boxShadow = `0 0 6px ${p.style.backgroundColor}, 0 0 12px ${p.style.backgroundColor}`;
+                    p.style.left = x + 'px';
+                    p.style.top = y + 'px';
+                    document.body.appendChild(p);
+
+                    // 360度ランダムな方向に飛び散る角度と速度を計算
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = 3 + Math.random() * 6; // 飛び散る勢い
+                    let vx = Math.cos(angle) * velocity;
+                    let vy = Math.sin(angle) * velocity;
+                    
+                    let px = x;
+                    let py = y;
+                    let opacity = 1;
+                    const gravity = 0.08; // 重力（少しずつ下に垂れる）
+                    const friction = 0.96; // 空気抵抗（だんだん減速する）
+
+                    function updateParticle() {
+                        // 物理演算の計算
+                        vx *= friction;
+                        vy *= friction;
+                        vy += gravity; 
+                        px += vx;
+                        py += vy;
+                        opacity -= 0.015; // 徐々に消えていく
+
+                        p.style.left = px + 'px';
+                        p.style.top = py + 'px';
+                        p.style.opacity = opacity;
+
+                        if (opacity &gt; 0) {
+                            requestAnimationFrame(updateParticle);
+                        } else {
+                            p.remove(); // 見えなくなったら削除
+                        }
+                    }
+                    requestAnimationFrame(updateParticle);
+                }
+            }
+        })();
+    &lt;/script&gt;
+&lt;/div&gt;
+&lt;!-- 花火コンポーネント：ここまで --&gt;</code></pre>
+</div>
+
+<style>
+/* 2. CSS部分: デザインを整えます（サイトのCSSファイルか<style>タグ内に貼り付け） */
+.code-container {
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #1e1e1e;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.code-lang {
+  color: #aaa;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #ccc;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+  border-color: #888;
+}
+
+.copy-btn.copied {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+}
+
+pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+code {
+  color: #d4d4d4;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: block;
+  white-space: pre;
+}
+</style>
+
+<script>
+/* 3. JavaScript部分: コピー機能のロジック（</body>直前などに貼り付け） */
+function copyCode(button) {
+  // ボタンと同じ階層、または親要素経由で<code>要素を探してテキストを取得
+  const container = button.closest('.code-container');
+  const codeText = container.querySelector('code').innerText;
+
+  // クリップボードにコピー
+  navigator.clipboard.writeText(codeText).then(() => {
+    // 成功時の見た目の変化
+    const btnText = button.querySelector('span');
+    const originalText = btnText.textContent;
+    
+    button.classList.add('copied');
+    btnText.textContent = 'コピー完了！';
+
+    // 2秒後に元の状態に戻す
+    setTimeout(() => {
+      button.classList.remove('copied');
+      btnText.textContent = originalText;
+    }, 2000);
+  }).catch(err => {
+    console.error('コピーに失敗しました: ', err);
+    alert('コピーに失敗しました。手動でコピーしてください。');
+  });
+}
+</script>
+
+</div>
+</body>
+</html>
